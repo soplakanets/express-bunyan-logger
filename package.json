@@ -1,0 +1,27 @@
+{
+  "name": "express-bunyan-logger",
+  "version": "0.1.0",
+  "description": "Bunyan logger middleware for ExpressJs",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/soplakanets/express-bunyan-logger.git"
+  },
+  "keywords": [
+    "express",
+    "bunyan",
+    "logging",
+    "logger",
+    "middleware"
+  ],
+  "author": "Serhiy Oplakanets <serhiy@oplakanets.com> (https://github.com/soplakanets)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/soplakanets/express-bunyan-logger/issues"
+  },
+  "homepage": "https://github.com/soplakanets/express-bunyan-logger",
+  "dependencies": {
+    "node-uuid": "^1.4.1",
+    "bunyan": "^0.22.3"
+  }
+}
