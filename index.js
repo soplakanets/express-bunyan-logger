@@ -20,7 +20,8 @@ module.exports = function(loggerInstance) {
       next();
     },
     requestLogger: function(req, res, next) {
-      req.log.info({req: req}, 'HTTP');
+      var log = req.log || loggerInstance;
+      log.info({req: req}, 'HTTP');
       next();
     }
   }
