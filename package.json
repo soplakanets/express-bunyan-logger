@@ -1,6 +1,6 @@
 {
   "name": "express-bunyan-logger",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Bunyan logger middleware for ExpressJs",
   "main": "index.js",
   "repository": {

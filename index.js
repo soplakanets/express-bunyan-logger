@@ -1,15 +1,27 @@
-var uuid = require('node-uuid');
+var uuid    = require('node-uuid');
+var bunyan  = require('bunyan');
 
 
-module.exports.childLogger = function(loggerInstance) {
+module.exports = function(loggerInstance) {
   if (!loggerInstance) {
-    loggerInstance = require('bunyan').createLogger();
+    var opts = {
+      stream: process.stdout,
+      serializers: {
+        req: bunyan.stdSerializers.req
+      }
+    };
+    loggerInstance = bunyan.createLogger(opts);
   }
 
-  return function(req, res, next) {
-    reqId = uuid.v1();
-    reqLogger = loggerInstance.child({req_id: reqId});
-    req.log = reqLogger;
-    next()
+  return {
+    childLogger: function(req, res, next) {
+      var reqId = uuid.v1();
+      req.log = loggerInstance.child({req_id: reqId});
+      next();
+    },
+    requestLogger: function(req, res, next) {
+      req.log.info({req: req}, 'HTTP');
+      next();
+    }
   }
-}
+};
